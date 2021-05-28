@@ -1,0 +1,54 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+#построение графика у=х
+x = np.linspace(0, 10, 50) # независимая х
+y = x
+plt.title("Линейная зависимость y = x") #название
+plt.xlabel("x") #обозначение оси абсцисс
+plt.ylabel("y")
+plt.grid() #включение отображения сетки
+plt.plot(x, y) #вывод графика
+
+#построение графика у=х пунктиром
+plt.title("Линейная зависимость y = x")
+plt.xlabel("x")
+plt.ylabel("y") 
+plt.grid()
+plt.plot(x, y, "r--")
+
+#построение двух графиков у=х и у=х*х на одном графике
+x = np.linspace(0, 10, 50)
+y1 = x
+y2 = [i**2 for i in x] # квадратичная зависимость
+plt.title("Зависимости: y1 = x, y2 = x^2")
+plt.xlabel("x")
+plt.ylabel("y1, y2")
+plt.grid() 
+plt.plot(x, y1, x, y2)
+
+#построение двух графиков 
+x = np.linspace(0, 10, 50)
+y1 = x
+y2 = [i**2 for i in x]
+plt.figure(figsize=(9, 9))
+plt.subplot(2, 1, 1)
+plt.plot(x, y1)
+plt.title("Зависимости: y1 = x, y2 = x^2")
+plt.ylabel("y1", fontsize=14)
+plt.grid(True)
+plt.subplot(2, 1, 2)
+plt.plot(x, y2) 
+plt.xlabel("x", fontsize=14)
+plt.ylabel("y2", fontsize=14)
+plt.grid(True) 
+
+#построение диаграмы количества фруктов
+fruits = ["apple", "peach", "orange", "banana", "melon"]
+counts = [34, 25, 43, 31, 17]
+plt.bar(fruits, counts)
+plt.title("Fruits!")
+plt.xlabel("Fruit")
+plt.ylabel("Count")
+
+
