@@ -1,0 +1,56 @@
+pip install pandas
+
+pip install hmmlearn
+
+
+pip install pystruct
+
+
+pip install cvxopt
+
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+def read_data(input_file): #считывает данные из входного файла
+    input_data = np.loadtxt(input_file, delimiter = None)
+
+dates = pd.date_range('1950-01', periods = input_data.shape[0], freq = 'M') #диапазон дат временного файла
+
+output = pd.Series(input_data[:, index], index = dates) #создаём данные временных рядов
+return output
+if __name__=='__main__':
+
+input_file = "C:/Users/LizaGr/Desktop/AO.txt"
+
+timeseries = read_data(input_file) # преобразовываем стобец в формат временных рядов
+
+plt.figure()
+timeseries.plot()
+plt.show()
+
+
+timeseries['1980':'1990'].plot() #отрезок данных
+<matplotlib.axes._subplots.AxesSubplot at 0xa0e4b00>
+plt.show()
+
+timeseries.mean() #среднее значение
+
+timeseries.max() #max значение
+
+timeseries.min() #min значение
+
+timeseries.describe() #стастистика
+
+timeseries_mm = timeseries.resample("A").mean() #повторная выборка данных через mean
+timeseries_mm.plot(style = 'g--')
+plt.show()
+
+
+timeseries_mm = timeseries.resample("A").median() #повторная выборка данных через median
+timeseries_mm.plot()
+plt.show()
+
+
+timeseries.rolling(window = 12, center = False).mean().plot(style = '-g') #расчет скользящего среднего значения
+plt.show()
