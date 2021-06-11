@@ -47,9 +47,10 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.40, rand
 clf = tree.DecisionTreeClassifier() 
 clf = clf.fit(X, Y) #подбор модели
 
-prediction = clf.predict([[133,37]]) #
+prediction = clf.predict([[133,37]]) #предсказание
 print(prediction)
 
+#визуализация
 dot_data = tree.export_graphviz(clf, feature_names = data_feature_names, out_file = None, filled = True, rounded = True)
 graph = pydotplus.graph_from_dot_data(dot_data)
 colors = ('orange', 'yellow')
@@ -78,11 +79,11 @@ import numpy as np
 cancer = load_breast_cancer()
 X_train, X_test, y_train, y_test = train_test_split(cancer.data, cancer.target, random_state = 0)
 
-forest = RandomForestClassifier(n_estimators = 50, random_state = 0)
+forest = RandomForestClassifier(n_estimators = 50, random_state = 0) #подбор модели
 forest.fit(X_train,y_train)
 
 
-print('Accuracy on the training subset:(:.3f)',format(forest.score(X_train,y_train)))
+print('Accuracy on the training subset:(:.3f)',format(forest.score(X_train,y_train))) #точность обучения и подмножество тестирование
 print('Accuracy on the training subset:(:.3f)',format(forest.score(X_test,y_test)))
 
 
