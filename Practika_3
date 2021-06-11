@@ -1,8 +1,8 @@
 import sklearn
 
 from sklearn.datasets import load_breast_cancer
-data = load_breast_cancer()
-label_names = data['target_names']
+data = load_breast_cancer() #загрузка набора данных
+label_names = data['target_names'] #огранизование данных (классы)
 labels = data['target']
 feature_names = data['feature_names']
 features = data['data']
@@ -16,11 +16,12 @@ train, test, train_labels, test_labels = train_test_split(features, labels, test
 
 
 from sklearn.naive_bayes import GaussianNB
-gnb = GaussianNB()
-model = gnb.fit(train, train_labels)
+gnb = GaussianNB() #инициализация модели
+model = gnb.fit(train, train_labels) #обучение модели
 
-preds = gnb.predict(test)
+preds = gnb.predict(test) 
 print(preds)
+
 from sklearn.metrics import accuracy_score
 print(accuracy_score(test_labels,preds))
 
@@ -43,10 +44,10 @@ data_feature_names = ['height','length of hair']
 
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.40, random_state = 5)
 
-clf = tree.DecisionTreeClassifier()
-clf = clf.fit(X, Y)
+clf = tree.DecisionTreeClassifier() 
+clf = clf.fit(X, Y) #подбор модели
 
-prediction = clf.predict([[133,37]])
+prediction = clf.predict([[133,37]]) #
 print(prediction)
 
 dot_data = tree.export_graphviz(clf, feature_names = data_feature_names, out_file = None, filled = True, rounded = True)
